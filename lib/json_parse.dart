@@ -38,7 +38,21 @@ class _JsonParseState extends State<JsonParse> {
               title: Text(user.title),
               subtitle: Text(user.body),
               leading: Icon(Icons.person),
-              trailing: Icon(Icons.person_2),
+              trailing: IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text(user.title),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [Text(user.body)],
+                            ),
+                          );
+                        });
+                  },
+                  icon: Icon(Icons.info)),
             );
           }),
     );
